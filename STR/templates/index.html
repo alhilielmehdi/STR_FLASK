@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript">
+	function addFields(){
+            // Number of inputs to create
+            var number = document.getElementById("task").value;
+            // Container <div> where dynamic content will be placed
+            var container = document.getElementById("container");
+            // Clear previous contents of the container
+            while (container.hasChildNodes()) {
+                container.removeChild(container.lastChild);
+            }
+            for (i=0;i<number;i++){
+                // Create an <input> element, set its type and name attributes
+                var period = document.createElement("input");
+                var at = document.createElement("input");
+                var bt = document.createElement("input");
+                var dl = document.createElement("input");
+                var nom=document.createElement("input");
+                period.type = "number";
+                period.name = "Periode" + i;
+                at.type = "number";
+                at.name = "At" + i;
+                bt.type = "number";
+                bt.name = "Bt" + i;
+                dl.type = "number";
+                dl.name = "Deadline" + i;
+                nom.type = "text";
+                nom.name = "Nt" + i;
+                container.appendChild(document.createTextNode("Period " + (i+1)));
+                  container.appendChild(document.createElement("br"));
+                container.appendChild(period);
+                container.appendChild(document.createElement("br"));
+                container.appendChild(document.createTextNode("Arival Time " + (i+1)));
+                  container.appendChild(document.createElement("br"));
+                container.appendChild(at);
+                container.appendChild(document.createElement("br"));
+                container.appendChild(document.createTextNode("Burst Time " + (i+1)));
+                  container.appendChild(document.createElement("br"));
+                container.appendChild(bt);
+                container.appendChild(document.createElement("br"));
+                container.appendChild(document.createTextNode("Deadline " + (i+1)));
+                  container.appendChild(document.createElement("br"));
+                container.appendChild(dl);
+                container.appendChild(document.createElement("br"));
+                container.appendChild(document.createTextNode("Name of Task " + (i+1)));
+                container.appendChild(document.createElement("br"));
+                container.appendChild(nom);
+                container.appendChild(document.createElement("br"));
+                 event.preventDefault();
+            }
+                container.appendChild(document.createElement("br"));
+                var sub=document.createElement("input");
+                sub.type="submit";
+                sub.id="subb"
+                sub.value="Run Sim";
+                container.appendChild(sub);
+                event.preventDefault();
+        }
+</script>
+</head>
+<body>
+
+<center>
+<form method="post" action="/">
+
+   <br><br><br> <select name="algo" id="algo"  >
+        <option value="RM">RM</option>
+        <option value="DM">DM</option>
+        <option value="EDF">EDF</option>
+         <option value="LLF">LLF</option>
+    </select>
+
+    <br><br><input  type="text" id="task" name="task"  placeholder="Number of Tasks" value=""><br><br>
+	<button onclick="addFields();" class="addf">add fields</button>
+	<div id="container"/>
+</form>
+</center>
+
+</body>
+</html>
